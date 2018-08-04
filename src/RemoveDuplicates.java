@@ -1,5 +1,3 @@
-package learnLeetCode.arrays;
-
 /**
  * 从排序数组中删除重复项
  * https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/21/
@@ -11,6 +9,9 @@ package learnLeetCode.arrays;
  *指向的元素与 slow 指向的元素不相等，那么当前 fast 指向的值赋给 slow 的下一位，同时 slow 指针后移，fast 不再向后移动；
  *	因为 fast 从 0 开始，nums.length 从 1 开始，所以外部循环条件为：fast < nums.length - 1；
  *	同样 slow + 1 代表处理后的数组长度。
+ *
+ *	时间复杂度：O(n)
+ *	空间复杂度：O(1)
  */
 public class RemoveDuplicates {
 
