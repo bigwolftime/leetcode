@@ -23,15 +23,14 @@ public class Rob {
     	if (nums == null)
     		return 0;
     	
-    	int a = 0, b = 0;
-    	int temp = 0;
+    	int a = 0, b = 0, res = 0;
     	for (int i : nums) {
-    		temp = a;
     		a = b;
-    		b = Math.max(temp + i, b);
+    		b = res;
+    		res = Math.max(a + i, res);
 		}
     	
-        return b;
+        return res;
     }
 	
 	public static void main(String[] args) {
