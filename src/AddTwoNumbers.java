@@ -3,9 +3,10 @@ import utils.ListNode;
 /**
  * 两数相加
  * https://leetcode-cn.com/problems/add-two-numbers/description/
- * https://leetcode-cn.com/articles/add-two-numbers/
  * @author bwt
  *
+ *	思路：
+ *	要注意考虑进位
  */
 public class AddTwoNumbers {
 
