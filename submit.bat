@@ -21,6 +21,9 @@ if "%branchName%" NEQ "" (
 		echo 推送
 		git push origin master
 		
-		echo okokok
+		echo 删除分支
+		git branch -d "%branchName%"
+		
+		echo 完成
 	) else echo 格式：submit.bat 分支名称 注释
 ) else echo 格式：submit.bat 分支名称 注释
