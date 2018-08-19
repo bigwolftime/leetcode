@@ -17,39 +17,27 @@ set commitText=%2
 
 if "%branchName%" NEQ "" (
 	if "%commitText%" NEQ "" (
-		color 0A
-		echo 回到 master 分支
-		color 0F
+		echo ===== 回到 master 分支 =======
 		
 		git checkout master
 		
-		color 0A
-		echo 合并分支到 master
-		color 0F
+		echo ===== 合并分支到 master ======
 		
 		git merge "%branchName%"
 		
-		color 0A
-		echo 添加文件并提交
-		color 0F
+		echo ====== 添加文件并提交 ========
 		
 		git add .
 		git commit -m "%commitText%"
 		
-		color 0A
-		echo 推送
-		color 0F
+		echo ========== 推送 ==============
 		
 		git push origin master
 		
-		color 0A
-		echo 删除分支
-		color 0F
+		echo ======== 删除分支 ============
 		
 		git branch -d "%branchName%"
 		
-		color 0A
-		echo 完成
-		color 0F
+		echo =========== 完成 =============
 	) else echo 格式：submit.bat 分支名称 注释
 ) else echo 格式：submit.bat 分支名称 注释
