@@ -25,7 +25,7 @@ public class Reverse {
 				try {
 					//溢出会抛出异常，然后捕获
 					Math.addExact(res, (int) (list.get(i) * Math.pow(10, list.size() - i - 1)));
-				}catch (Exception e) {
+				}catch (ArithmeticException e) {
 					return 0;
 				}
 				res += list.get(i) * Math.pow(10, list.size() - i - 1);
@@ -34,7 +34,7 @@ public class Reverse {
 			for(int i = list.size() - 1; i >= 0; i--) {
 				try {
 					Math.addExact(res, (int) (list.get(i) * Math.pow(10, list.size() - i - 1)));
-				} catch (Exception e) {
+				} catch (ArithmeticException e) {
 					return 0;
 				}
 				res += list.get(i) * Math.pow(10, list.size() - i - 1);
