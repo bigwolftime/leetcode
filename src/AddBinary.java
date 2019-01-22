@@ -49,43 +49,41 @@ public class AddBinary {
 
         //考虑位数不一致的情况
         if (p != -1){
-            while (p >= 0){
-                if ((a.charAt(p) & 0x0f) == 0){
-                    if (flag){
-                        res.append(1);
-                        flag = false;
-                    }else {
-                        res.append(0);
-                    }
-                }else {
-                    if (flag){
-                        res.append(0);
-                    }else {
-                        res.append(1);
-                        flag = false;
-                    }
-                }
-                p--;
-            }
+            res = leftLengthCalc(res, a.substring(0, p + 1), flag);
         }else if (q != -1){
-            while (q >= 0){
-                if ((b.charAt(q) & 0x0f) == 0){
-                    if (flag){
-                        res.append(1);
-                        flag = false;
-                    }else {
-                        res.append(0);
-                    }
-                }else {
-                    if (flag){
-                        res.append(0);
-                    }else {
-                        res.append(1);
-                        flag = false;
-                    }
-                }
-                q--;
+            res = leftLengthCalc(res, b.substring(0, q + 1), flag);
+        }else {
+            if (flag){
+                res.append(1);
             }
+        }
+
+        return res.reverse().toString();
+    }
+
+    public static StringBuilder leftLengthCalc(StringBuilder res, String str, boolean flag){
+        int len = str.length() - 1;
+        int temp = 0;
+
+        while(len >= 0){
+            temp = str.charAt(len) & 0x0f;
+
+            if (temp == 0){
+                if (flag){
+                    res.append(1);
+                    flag = false;
+                }else {
+                    res.append(0);
+                }
+            }else if (temp == 1){
+                if (flag){
+                    res.append(0);
+                }else {
+                    res.append(1);
+                }
+            }
+
+            len--;
         }
 
         //考虑最后的进位
@@ -93,11 +91,12 @@ public class AddBinary {
             res.append(1);
         }
 
-        return res.reverse().toString();
+        return res;
     }
 
     public static void main(String[] args) {
 
-        System.out.println(addBinary("1010", "1011"));
+        System.out.println(addBinary("11", "1"));
+        //System.out.println("11".substring(0, 1));
     }
 }
