@@ -25,7 +25,7 @@ public class IsPowerOfTwo {
         n |= n >>> 4;
         n |= n >>> 8;
         n |= n >>> 16;
-        return (n < 0) ? 1 : n + 1;
+        return n + 1;
     }
 
     public static void main(String[] args) {
