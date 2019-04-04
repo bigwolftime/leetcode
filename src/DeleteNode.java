@@ -7,7 +7,7 @@ import utils.ListNode;
  * 删除链表中的节点
  * https://leetcode-cn.com/problems/delete-node-in-a-linked-list/
  */
-public class deleteNode {
+public class DeleteNode {
 
     public static void deleteNode(ListNode node) {
         while (node.next.next != null){
