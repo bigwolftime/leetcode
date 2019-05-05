@@ -4,6 +4,8 @@
  *
  * 坏了的计算器
  * https://leetcode-cn.com/problems/broken-calculator/
+ *
+ * 使用逆向的思路，想要降低次数，就要尽量执行
  */
 public class BrokenCalc {
 
@@ -15,7 +17,7 @@ public class BrokenCalc {
         int count = 0;
         while (X != Y) {
             if (Y > X && Y % 2 == 0) {
-                Y /= 2;
+                Y >>= 1;
             }else if (Y == X){
                 return count;
             }else {
