@@ -5,7 +5,7 @@
  * 坏了的计算器
  * https://leetcode-cn.com/problems/broken-calculator/
  *
- * 使用逆向的思路，想要降低次数，就要尽量执行
+ * 使用逆向的思路，想要降低次数，就要尽量执行 /2 操作
  */
 public class BrokenCalc {
 
