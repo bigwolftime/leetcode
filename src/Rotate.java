@@ -1,7 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
-
 /**
+ * 旋转数组
+ * https://leetcode-cn.com/problems/rotate-array/c
+ * 原地算法有点问题没有解决。目前使用暴力复制。
+ *
  * @author Liuxin
  * @since 2019/9/5 10:23
  */
