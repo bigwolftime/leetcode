@@ -1,6 +1,9 @@
 /**
  * 数组中数字出现的次数
  * https://leetcode-cn.com/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-lcof/
+ *
+ * 一个数组: 有 2 个数字出现了 1 次, 其余均出现了 2 次, 求这 2 个数字
+ *
  */
 public class SingleNumbers {
 
