@@ -1,6 +1,6 @@
 /**
  * 买卖股票的最佳时机
- * https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/23/dynamic-programming/55/
+ * https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/
  * @author bwt
  *
  *	参考：https://blog.csdn.net/chenvast/article/details/78950392
