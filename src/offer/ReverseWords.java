@@ -1,10 +1,14 @@
+package offer;
+
 import java.util.Stack;
 
 /**
- * 翻转字符串里的单词
- * https://leetcode-cn.com/problems/reverse-words-in-a-string/
+ * 反转字符串单词顺序
+ * https://leetcode-cn.com/problems/fan-zhuan-dan-ci-shun-xu-lcof/
  *
- * 空间复杂度可优化
+ * 空间复杂度可以优化一下
+ *
+ * like: https://leetcode-cn.com/problems/reverse-words-in-a-string/
  */
 public class ReverseWords {
 
@@ -40,8 +44,9 @@ public class ReverseWords {
         return resBuilder.toString();
     }
 
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
+        System.err.println(reverseWords("a good   example"));;
     }
 
 }
