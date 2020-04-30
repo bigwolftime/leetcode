@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 /**
- * 求众数
+ * 多数元素
  * https://leetcode-cn.com/problems/majority-element/description/
  * @author bwt
  *
