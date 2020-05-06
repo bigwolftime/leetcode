@@ -9,7 +9,7 @@ import utils.TreeNode;
  */
 public class BuildTree {
 
-    private static TreeNode buildTree(int[] preorder, int[] inorder) {
+    /*private static TreeNode buildTree(int[] preorder, int[] inorder) {
         if (preorder == null || preorder.length == 0) {
             return null;
         }
@@ -28,6 +28,6 @@ public class BuildTree {
         int[] preorder = new int[]{ 3,9,20,15,7 };
         int[] inorder = new int[]{ 9,3,15,20,7 };
         buildTree(preorder, inorder);
-    }
+    }*/
 
 }
