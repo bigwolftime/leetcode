@@ -1,13 +1,10 @@
 import utils.TreeNode;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 对称二叉树
  * https://leetcode-cn.com/problems/symmetric-tree/
  * 思路：中序遍历
- * 中序遍历并不能解决问题
+ * 单纯中序遍历并不能解决问题
  *
  * @Author Liuxin
  * @Date 2019/2/26 16:55
@@ -15,47 +12,31 @@ import java.util.List;
 public class IsSymmetric {
 
     public static boolean isSymmetric(TreeNode root) {
-        List<String> order = new ArrayList<>();
-        inOrderRecursive(root, order);
-
-        int p = 0, q = order.size() - 1;
-        while (p <= q){
-            if (!order.get(p).equals(order.get(q))){
-                return false;
-            }
-            p++;
-            q--;
-        }
-
-        return true;
+        return isMirror(root, root);
     }
 
-    private static void inOrderRecursive(TreeNode root, List<String> order){
-        if (root == null){
-            order.add("n");
-            return;
+    private static boolean isMirror(TreeNode t1, TreeNode t2){
+        if (t1 == null && t2 == null) {
+            return true;
+        }
+        if (t1 == null || t2 == null) {
+            return false;
         }
 
-        inOrderRecursive(root.left, order);
-        order.add(String.valueOf(root.val));
-        inOrderRecursive(root.right, order);
+        return t1.val == t2.val && isMirror(t1.left, t2.right) && isMirror(t1.right, t2.left);
     }
 
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
         TreeNode a = new TreeNode(2);
         TreeNode b = new TreeNode(2);
-        TreeNode c = new TreeNode(3);
-        TreeNode d = new TreeNode(3);
-        TreeNode e = new TreeNode(4);
-        TreeNode f = new TreeNode(4);
+        TreeNode c = new TreeNode(2);
+        TreeNode d = new TreeNode(2);
 
         root.left = a;
         root.right = b;
         a.left = c;
-        a.right = e;
-        b.left = f;
-        b.right = d;
+        b.left = d;
 
         System.err.println(isSymmetric(root));;
     }
