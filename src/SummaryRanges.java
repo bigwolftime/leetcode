@@ -11,34 +11,49 @@ import java.util.List;
  */
 public class SummaryRanges {
 
-    private static String pattern = "%s->%s";
+    private static final String PATTERN = "%d->%d";
 
     public static List<String> summaryRanges(int[] nums) {
+        List<String> list = new ArrayList<>();
+
         if (nums == null || nums.length == 0){
-            return new ArrayList<>();
+            return list;
         }
 
-        List<String> res = new ArrayList<>();
-
-        int min = nums[0], max = nums[nums.length - 1];
-        if (min == max){
-            return new ArrayList<String>(){{ add(String.valueOf(nums[0])); }};
+        if (nums.length == 1) {
+            list.add(String.valueOf(nums[0]));
+            return list;
         }
 
-        int cur = 0, offset = 0;
-        while (min <= max){
-            if (min + 1 != nums[cur + 1]){
+        int start = 0, end = 1;
 
+        do {
+            if (nums[end] == nums[end - 1] + 1) {
+                end++;
+            } else {
+                add(nums, start, end, list);
+
+                start = end;
+                end = start + 1;
             }
-        }
+        } while (end < nums.length);
 
-        System.err.println(res);
-        return new ArrayList<>();
+        add(nums, start, end, list);
+
+        return list;
+    }
+
+    private static void add(int[] nums, int start, int end, List<String> list) {
+        if (end - start > 1) {
+            list.add(String.format(PATTERN, nums[start], nums[end - 1]));
+        } else {
+            list.add(String.valueOf(nums[start]));
+        }
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{0,2,3,4,6,8,9};
-        summaryRanges(nums);
+        int[] nums = new int[]{-1};
+        System.err.println(summaryRanges(nums));;
     }
 
 }
