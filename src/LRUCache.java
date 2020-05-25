@@ -5,15 +5,12 @@ import java.util.LinkedHashMap;
  * @Date 2019/3/29 11:03
  *
  * LRU 缓存机制
- * https://leetcode-cn.com/problems/lru-cache/submissions/
+ * https://leetcode-cn.com/problems/lru-cache
  */
 public class LRUCache {
 
     LinkedHashMap<Integer, Integer> map;
     private int capacity;
-
-    public LRUCache() {
-    }
 
     public LRUCache(int capacity) {
         this.capacity = capacity;
@@ -21,9 +18,8 @@ public class LRUCache {
     }
 
     public void put(Integer key, Integer value) {
-        if (map.containsKey(key)) {
-            map.remove(key);
-        }
+        map.remove(key);
+
         if (map.size() >= capacity) {
             map.remove(map.keySet().iterator().next());
         }
