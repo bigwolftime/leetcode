@@ -34,7 +34,7 @@ public class threeSumClosest {
                     start++;
                 } else if (tempSum > target) {
                     end--;
-                } else if (tempSum == target) {
+                } else {
                     return tempSum;
                 }
 
