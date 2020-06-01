@@ -63,8 +63,6 @@ public class IsValidSudoku {
             return false;
         }
 
-        HashSet<Character> set = new HashSet<>();
-
         // 验证每个九宫格
         for (int x = 0; x <= 6; x += 3) {
             for (int y = 0; y < 9; y += 3) {
