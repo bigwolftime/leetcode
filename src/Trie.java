@@ -1,38 +1,34 @@
-import java.time.LocalDate;
-import java.util.List;
-
 /**
+ * 实现 Trie(前缀树)
+ * https://leetcode-cn.com/problems/implement-trie-prefix-tree/
+ *
  * @Author Liuxin
  * @Date 2019/3/25 19:31
  *
  */
 public class Trie {
 
-    private List<String> data;
+    /** Initialize your data structure here. */
+    public Trie() {
 
-    public Trie() { }
-
-    public void insert(String word) {
-        if (word != null){
-            data.add(word);
-        }
     }
 
-    /**
-     * Returns if the word is in the trie.
-     * 精确查询
-     */
+    /** Inserts a word into the trie. */
+    public void insert(String word) {
+
+    }
+
+    /** Returns if the word is in the trie. */
     public boolean search(String word) {
         return false;
     }
 
-    /**
-     * Returns if there is any word in the trie that starts with the given prefix.
-     */
+    /** Returns if there is any word in the trie that starts with the given prefix. */
     public boolean startsWith(String prefix) {
-
-        return true;
+        return false;
     }
+
+
 
     public static void main(String[] args) {
         Trie trie = new Trie();
