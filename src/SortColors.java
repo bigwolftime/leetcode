@@ -9,21 +9,15 @@ public class SortColors {
 
     private static void sortColors(int[] nums) {
         int[] arr = new int[3];
-
         for (int i : nums) {
             arr[i]++;
         }
 
         int idx = 0;
-
-        for (int i = 0; i < arr[0]; i++) {
-            nums[idx++] = 0;
-        }
-        for (int i = 0; i < arr[1]; i++) {
-            nums[idx++] = 1;
-        }
-        for (int i = 0; i < arr[2]; i++) {
-            nums[idx++] = 2;
+        for (int i = 0; i < 3; i++) {
+            for (int x = 0; x < arr[i]; x++) {
+                nums[idx++] = i;
+            }
         }
     }
 
