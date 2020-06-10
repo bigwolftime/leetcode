@@ -1,10 +1,10 @@
 /**
  * 验证回文串
- * https://leetcode-cn.com/problems/valid-palindrome/description/
+ * https://leetcode-cn.com/problems/valid-palindrome/
  * @author bwt
  *
  */
-public class IsPalindrome {
+public class IsPalindromeStr {
 
 	public static boolean isPalindrome(String s) {
         if ("".equals(s))

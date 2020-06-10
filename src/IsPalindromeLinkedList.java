@@ -2,7 +2,7 @@ import utils.ListNode;
 
 /**
  * 回文链表
- * https://leetcode-cn.com/problems/palindrome-linked-list/description/
+ * https://leetcode-cn.com/problems/palindrome-linked-list/
  * @author bwt
  *
  *	大致思路：首先找到数组的中间节点，然后中间节点之后的链表翻转，翻转结束后两端同时开始比较。
@@ -10,7 +10,7 @@ import utils.ListNode;
  *下步为空，即：fast.next = null || fast.next.next = null 时结束，此时 slow 
  *的指向则为中间节点。
  */
-public class IsPalindrome1 {
+public class IsPalindromeLinkedList {
 
 	public static boolean isPalindrome(ListNode head) {
         if (head == null || head.next == null)
