@@ -17,24 +17,26 @@ public class LongestCommonPrefix {
         }
 
         int index = 0;
-        res.append(strs[0].charAt(index));
-        while (true){
-            for (int i = 1; i < strs.length; i++){
-                if (!strs[i].startsWith(res.toString())){
-                    return res.substring(0, res.length() - 1);
-                }
-            }
-            if (++index < strs[0].length()){
-                res.append(strs[0].charAt(index));
-                continue;
+        char c;
+        while (true) {
+            if (index >= strs[0].length()) {
+                return res.toString();
             }
 
-            return res.toString();
+            c = strs[0].charAt(index);
+            for (String str : strs) {
+                if (index >= str.length() || str.charAt(index) != c) {
+                    return res.toString();
+                }
+            }
+
+            res.append(c);
+            index++;
         }
     }
 
     public static void main(String[] args) {
-        String[] strs = new String[]{"a"};
+        String[] strs = new String[]{"cab", "ab"};
         System.err.println(longestCommonPrefix(strs));
     }
 }
