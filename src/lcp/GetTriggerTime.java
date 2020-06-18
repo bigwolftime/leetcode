@@ -8,7 +8,6 @@ package lcp;
  * 计算 increase 每列的加和填充到数组. 空间复杂度 O(n)
  * 那么就转变成二分查找. 时间复杂度: 3 * m * logN = O(m * logN) (m: requirements 数组长度, n: increase 长度)
  * <p>
- * OJ 未通过, 但是找不出是啥问题... 同样的数据和我的就是不一样.
  *
  * @author liuxin
  * @time 2020/6/17 18:49
