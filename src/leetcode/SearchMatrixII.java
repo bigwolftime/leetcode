@@ -4,7 +4,7 @@ package leetcode;
  * @author liuxin
  * @date 2020/5/1 7:32
  * <p>
- * 搜索二维矩阵
+ * 搜索二维矩阵 II
  * https://leetcode-cn.com/problems/search-a-2d-matrix-ii/
  * <p>
  * 解决办法:
@@ -12,7 +12,7 @@ package leetcode;
  * 2. 延对角线搜索 tag: 有序, 二分
  * 3. 左下角起始
  */
-public class SearchMatrix {
+public class SearchMatrixII {
 
     private static boolean searchMatrix(int[][] matrix, int target) {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
