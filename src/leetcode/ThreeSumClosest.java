@@ -14,7 +14,7 @@ import java.util.Arrays;
  * @author liuxin
  * @date 2020/5/31 9:52
  */
-public class threeSumClosest {
+public class ThreeSumClosest {
 
     private static int threeSumClosest(int[] nums, int target) {
         Arrays.sort(nums);
