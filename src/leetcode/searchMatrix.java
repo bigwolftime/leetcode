@@ -14,7 +14,7 @@ public class searchMatrix {
 
     private static boolean searchMatrix(int[][] matrix, int target) {
         int start = 0, end = matrix.length - 1;
-        int mid = 0;
+        int mid;
         int temp;
 
         // 第一次二分 确定行数
