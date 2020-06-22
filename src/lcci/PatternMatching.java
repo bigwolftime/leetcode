@@ -91,28 +91,57 @@ public class PatternMatching {
 
     private static void fillString(String pattern, String value, StringBuilder x, StringBuilder y, int xLen, int yLen, boolean flag) {
         boolean xFill = false, yFill = false;
-        int index = 0;
-        for (int i = 0; i < pattern.length(); i++) {
-            // 根据 xLen, yLen 填充字符串
-            if (pattern.charAt(i) == 'a' && flag) {
-                while (xLen > 0) {
-                    // 补充 x 字符串
-                    x.append(value.charAt(index++));
-                    xLen--;
-                }
-                xFill = true;
-            } else {
-                while (yLen > 0) {
-                    // 补充 y 字符串
-                    y.append(value.charAt(index++));
-                    yLen--;
-                }
-                yFill = true;
-            }
+        int index;
 
-            if (xFill && yFill) {
-                // 填充完毕
-                break;
+        if (flag) {
+            index = 0;
+            for (int i = 0; i < pattern.length(); i++) {
+                // 根据 xLen, yLen 填充字符串
+                if (pattern.charAt(i) == 'a') {
+                    while (xLen > 0) {
+                        // 补充 x 字符串
+                        x.append(value.charAt(index++));
+                        xLen--;
+                    }
+                    xFill = true;
+                } else {
+                    while (yLen > 0) {
+                        // 补充 y 字符串
+                        y.append(value.charAt(index++));
+                        yLen--;
+                    }
+                    yFill = true;
+                }
+
+                if (xFill && yFill) {
+                    // 填充完毕
+                    break;
+                }
+            }
+        } else {
+            index = value.length() - 1;
+            for (int i = pattern.length() - 1; i >= 0; i--) {
+                // 根据 xLen, yLen 填充字符串
+                if (pattern.charAt(i) == 'a') {
+                    while (xLen > 0) {
+                        // 补充 x 字符串
+                        x.append(value.charAt(index--));
+                        xLen--;
+                    }
+                    xFill = true;
+                } else {
+                    while (yLen > 0) {
+                        // 补充 y 字符串
+                        y.append(value.charAt(index--));
+                        yLen--;
+                    }
+                    yFill = true;
+                }
+
+                if (xFill && yFill) {
+                    // 填充完毕
+                    break;
+                }
             }
         }
     }
@@ -147,7 +176,11 @@ public class PatternMatching {
     }
 
     public static void main(String[] args) {
-        System.err.println(patternMatching("bbba", "xxxxxxy"));
+        // "bbbbbbbbbbbbbbabbbbb"
+        // "ppppppppppppppjsftcleifftfthiehjiheyqkhjfkyfckbtwbelfcgihlrfkrwireflijkjyppppg"
+        System.err.println(patternMatching(
+                "bbbbbbbbbbbbbbabbbbb",
+                 "ppppppppppppppjsftcleifftfthiehjiheyqkhjfkyfckbtwbelfcgihlrfkrwireflijkjyppppp"));
     }
 
 }
