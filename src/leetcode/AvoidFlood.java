@@ -56,6 +56,7 @@ public class AvoidFlood {
             // 寻找空窗期, 寻找范围: (fullIdx, i)
             for (int j = 0; j < zeroList.size(); j++) {
                 if (zeroList.get(j) > fullIdx && zeroList.get(j) < i) {
+                    // 这里可以优化为二分
                     // 找到了
                     res[zeroList.get(j)] = temp;
                     zeroList.remove(j);
