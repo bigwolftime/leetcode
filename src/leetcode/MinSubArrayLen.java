@@ -17,7 +17,7 @@ public class MinSubArrayLen {
         Integer minLen = null;
         boolean expand = false;
 
-        while (start >= 0 && end < nums.length) {
+        while (end < nums.length) {
             if (start != end) {
                 sum = expand ? sum + nums[end] : sum - nums[start - 1];
             } else {
