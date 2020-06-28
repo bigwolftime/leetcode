@@ -6,46 +6,31 @@ package leetcode;
  *
  * 双周赛 29 第三题
  *
- * 待优化
- *
  * @author liuxin
  * @time 2020/6/28 17:27
  */
 public class LongestSubarray {
 
     private static int longestSubarray(int[] nums) {
-        int leftZeroCount, rightZeroCount;
+        int leftZeroCount = 0, rightZeroCount = 0;
         int maxLen = 0;
 
-        for (int i = 0; i < nums.length; i++) {
-            leftZeroCount = getLeftZeroCount(nums, i - 1);
-            rightZeroCount = getRightZeroCount(nums, i + 1);
+        for (int num : nums) {
+            if (num == 0) {
+                leftZeroCount = rightZeroCount;
+                rightZeroCount = 0;
+            } else {
+                rightZeroCount++;
+            }
+
             maxLen = Math.max(maxLen, leftZeroCount + rightZeroCount);
         }
 
-        return maxLen;
-    }
-
-    private static int getLeftZeroCount(int[] nums, int index) {
-        int count = 0;
-        while (index >= 0 && nums[index] == 1) {
-            count++;
-            index--;
-        }
-        return count;
-    }
-
-    private static int getRightZeroCount(int[] nums, int index) {
-        int count = 0;
-        while (index < nums.length && nums[index] == 1) {
-            count++;
-            index++;
-        }
-        return count;
+        return maxLen != nums.length ? maxLen : nums.length - 1;
     }
 
     public static void main(String[] args) {
-        longestSubarray(new int[]{ 1,1,1 });
+        System.err.println(longestSubarray(new int[]{ 0,0,1,1,0,0,1,1,1,0,1 }));;
     }
 
 }
