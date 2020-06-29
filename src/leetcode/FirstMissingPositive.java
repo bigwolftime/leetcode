@@ -5,8 +5,7 @@ package leetcode;
  * https://leetcode-cn.com/problems/first-missing-positive/
  *
  * 总觉得题目没有描述清楚
- * 1. 有没有多个负数的情况?
- * 2. 为啥范围在 [1, n + 1] ?
+ * 1. 为啥范围在 [1, n + 1] ?
  *
  * @author liuxin
  * @date 2020/6/27 8:08
