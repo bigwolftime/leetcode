@@ -21,23 +21,23 @@ public class Intersect {
 		ArrayList<Integer> list = new ArrayList<>();
 		int p = 0, q = 0;
 		while(q < nums2.length && p < nums1.length) {
-			if (nums1[p] == nums2[q]) {
+			if (nums1[p] < nums2[q]) {
+				p++;
+			} else if (nums1[p] > nums2[q]) {
+				q++;
+			} else {
 				list.add(nums1[p]);
 				p++;
 				q++;
-			}else {
-				if (nums1[p] < nums2[q])
-					p++;
-				else
-					q++;
 			}
 		}
-		
+
 		int[] res = new int[list.size()];
-		for(int i = 0; i < res.length; i++) {
-			res[i] = list.get(i);
+		p = 0;
+		for (int i : list) {
+			res[p++] = i;
 		}
-		
+
         return res;
     }
 	
