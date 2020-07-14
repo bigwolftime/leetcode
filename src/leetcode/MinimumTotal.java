@@ -13,32 +13,31 @@ import java.util.List;
 public class MinimumTotal {
 
     private static int minimumTotal(List<List<Integer>> triangle) {
-        List<Integer> curList, prevList;
-        int top1 = Integer.MAX_VALUE, top2 = Integer.MAX_VALUE;
+        List<Integer> curList = triangle.get(0), prevList = triangle.get(0);
+        int prevX, prevY;
 
         for (int x = 1; x < triangle.size(); x++) {
             curList = triangle.get(x);
-            prevList = triangle.get(x - 1);
 
             for (int y = 0; y < x + 1; y++) {
                 if (y == 0) {
-                    top1 = prevList.get(0);
+                    prevX = 0;
+                    prevY = 0;
                 } else if (y == x) {
-                    top2 = prevList.get(x - 1);
+                    prevX = x - 1;
+                    prevY = x - 1;
                 } else {
-                    top1 = prevList.get(y - 1);
-                    top2 = prevList.get(y);
+                    prevX = y - 1;
+                    prevY = y;
                 }
 
-                curList.set(y, Math.min(top1, top2) + curList.get(y));
-
-                top1 = Integer.MAX_VALUE;
-                top2 = Integer.MAX_VALUE;
+                curList.set(y, Math.min(prevList.get(prevX), prevList.get(prevY)) + curList.get(y));
             }
+
+            prevList = curList;
         }
 
         int min = Integer.MAX_VALUE;
-        curList = triangle.get(triangle.size() - 1);
         for (int i : curList) {
             min = Math.min(i, min);
         }
