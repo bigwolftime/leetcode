@@ -13,10 +13,16 @@ package leetcode;
  *
  * 所以 f(i, n) = G(i - 1) + G(n - i).
  *
+ * 所以 G(n) = G(0) + G(1) + G(1) + G(0) + ...
+ *
  * 例如: G(3) = f(1, 3) + f(2, 3) + f(3, 3)
  *           = G(0) + G(2) + G(1) + G(1) + G(2) + G(0)
  * 其中 G(0) = G(1) = 1.
- * G
+ *
+ * G(2) = f(1, 2) + f(2, 2)
+ *      = G(0) + G(1) + G(1) + G(0)
+ *
+ * 太妙了太妙了
  *
  * @author liuxin
  * @time 2020/7/15 10:44
@@ -24,12 +30,16 @@ package leetcode;
 public class NumTrees {
 
     private static int numTrees(int n) {
-        int[] G = new int[n];
+        int[] G = new int[n + 1];
         G[0] = G[1] = 1;
 
+        for (int i = 2; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                G[i] += G[j - 1] * G[i - j];
+            }
+        }
 
-
-        return -1;
+        return G[n];
     }
 
 
