@@ -9,6 +9,7 @@ import java.util.Objects;
  */
 public class TwoSum {
 
+	// 暴力 时间复杂度: O(n ^ 2)
 	/*public static int[] twoSum(int[] numbers, int target) {
 		for(int i = 0; i < numbers.length; i++) {
 			for (int j = i + 1; j < numbers.length; j++) {
@@ -23,17 +24,18 @@ public class TwoSum {
     }*/
 
 	public static int[] twoSum(int[] numbers, int target) {
+		// map 时间复杂度: O(n) 空间复杂度: O(n)
 		HashMap<Integer, Integer> map = new HashMap<>();
 
 		for (int i = 0; i < numbers.length; i++){
-			map.put(numbers[i], i);
+			map.put(numbers[i], i + 1);
 		}
 
-		Integer key;
+		int key;
 		for (int i = 0; i < numbers.length; i++){
 			key = target - numbers[i];
 			if (Objects.nonNull(map.get(key)) && i != map.get(key)){
-				return new int[] {i, map.get(key)};
+				return new int[] {i + 1, map.get(key)};
 			}
 		}
 
