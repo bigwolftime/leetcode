@@ -23,7 +23,7 @@ public class TwoSum {
 		return new int[] {0, 0};
     }*/
 
-	public static int[] twoSum(int[] numbers, int target) {
+	/*public static int[] twoSum(int[] numbers, int target) {
 		// map 时间复杂度: O(n) 空间复杂度: O(n)
 		HashMap<Integer, Integer> map = new HashMap<>();
 
@@ -40,8 +40,33 @@ public class TwoSum {
 		}
 
 		return new int[]{0, 0};
+	}*/
+
+	/**
+	 * 双指针
+	 * @param numbers
+	 * @param target
+	 * @return
+	 */
+	public static int[] twoSum(int[] numbers, int target) {
+		int start = 0, end = numbers.length - 1;
+		int curSum;
+
+		while (start < end) {
+			curSum = numbers[start] + numbers[end];
+
+			if (curSum < target) {
+				start++;
+			} else if (curSum > target) {
+				end--;
+			} else {
+				return new int[]{ start + 1, end + 1 };
+			}
+		}
+
+		return new int[]{ -1, -1 };
 	}
-	
+
 	public static void main(String[] args) {
 		int[] numbers = new int[] {2, 7, 11, 15};
 		int[] res = twoSum(numbers, 18);
