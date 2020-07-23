@@ -16,10 +16,7 @@ package leetcode;
 public class DivisorGame {
 
     public static boolean divisorGame(int N) {
-        if (N % 2 == 0){
-            return true;
-        }
-        return false;
+        return (N & 1) == 0;
     }
 
     public static void main(String[] args) {
