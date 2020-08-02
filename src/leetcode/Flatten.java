@@ -8,6 +8,8 @@ import java.util.Stack;
  * 二叉树展开为链表
  * https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list/
  *
+ * 想到的思路是: 拿两个栈: stack 负责整体的循环, tempStack 负责子树的循环.
+ *
  * @author liuxin
  * @date 2020/8/2 12:18
  */
