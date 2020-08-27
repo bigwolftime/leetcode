@@ -43,7 +43,10 @@ public class Multiply {
 			if (zeroFlag) {
 				tempBuilder.replace(0, tempBuilder.length(), "0");
 			} else {
-				tempBuilder.append("0".repeat(Math.max(0, base)));
+				// tempBuilder.append("0".repeat(Math.max(0, base)));
+				for (int x = 0; x < Math.max(0, base); x++) {
+					tempBuilder.append("0");
+				}
 			}
 
 			add(resBuilder, tempBuilder);
