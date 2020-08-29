@@ -1,7 +1,6 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -17,17 +16,13 @@ import java.util.List;
  */
 public class ProductOfNumbers {
 
-    private static List<Integer> list;
     private static List<Integer> productList;
 
     public ProductOfNumbers() {
-        list = new ArrayList<>();
         productList = new ArrayList<>();
     }
 
     public void add(int num) {
-        list.add(num);
-
         if (num == 0) {
             productList.clear();
         } else {
