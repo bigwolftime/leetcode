@@ -1,4 +1,4 @@
-package contest;
+package leetcode;
 
 /**
  * 替换所有的问号
