@@ -8,6 +8,10 @@ import java.util.List;
 /**
  * 二叉搜索树中的众数
  * https://leetcode-cn.com/problems/find-mode-in-binary-search-tree/
+ *
+ * 中序遍历, 得到递增序列
+ * 计算出现的次数, 最大次数..
+ * 根据出现次数取数
  */
 public class FindMode {
 
