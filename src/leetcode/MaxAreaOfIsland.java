@@ -12,11 +12,10 @@ package leetcode;
 public class MaxAreaOfIsland {
 
     private static final int TRAVEL_COLOR = -1;
-    private static int MAX_AREA;
     private static int CUR_AREA;
 
     private static int maxAreaOfIsland(int[][] grid) {
-        MAX_AREA = 0;
+        int MAX_AREA = 0;
 
         for (int x = 0; x < grid.length; x++) {
             for (int y = 0; y < grid[x].length; y++) {
@@ -48,7 +47,6 @@ public class MaxAreaOfIsland {
 
         // 1
         CUR_AREA++;
-        MAX_AREA = Math.max(MAX_AREA, CUR_AREA);
         grid[x][y] = TRAVEL_COLOR;
 
         dfs(grid, x - 1, y);
