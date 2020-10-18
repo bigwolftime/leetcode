@@ -3,6 +3,9 @@ package leetcode;
 import utils.ListNode;
 
 /**
+ * 删除链表的倒数第 N 个节点
+ * https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/
+ *
  * @Author Liuxin
  * @Date 2019/3/14 18:18
  */
@@ -11,20 +14,35 @@ public class RemoveNthFromEnd {
     public static ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode pioneer = head, cur = head;
 
-        while (n-- > 0){
+        while (--n > 0){
             pioneer = pioneer.next;
         }
+
+        ListNode pre = null;
         while (pioneer != null && pioneer.next != null){
+            if (pre == null) {
+                pre = cur;
+            } else {
+                pre = pre.next;
+            }
+
             pioneer = pioneer.next;
             cur = cur.next;
         }
 
-        if (cur == head){
-            return head.next;
-        }
+        if (pre != null) {
+            if (cur == pioneer) {
+                pre.next = null;
+            } else {
+                pre.next = cur.next;
+            }
+        } else {
+            if (head == null) {
+                return null;
+            }
 
-        ListNode next = cur.next.next;
-        cur.next = next;
+            head = head.next;
+        }
 
         return head;
     }
@@ -36,15 +54,11 @@ public class RemoveNthFromEnd {
         ListNode c = new ListNode(4);
         ListNode d = new ListNode(5);
 
-        //head.next = a;
-        //a.next = b;
-        //b.next = c;
-        //c.next = d;
+        head.next = a;
+        a.next = b;
+        b.next = c;
+        c.next = d;
 
-        ListNode res = removeNthFromEnd(head, 1);
-        while (res != null){
-            System.err.println(res.val);
-            res = res.next;
-        }
+        ListNode res = removeNthFromEnd(head, 2);
     }
 }
