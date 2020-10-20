@@ -2,9 +2,14 @@ package leetcode;
 
 import utils.ListNode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 重排链表
  * https://leetcode-cn.com/problems/reorder-list/
+ *
+ * 这里使用了 O(n) 的 list 存储 ListNode
  *
  * @author Liuxin
  * @since 2019/8/29 17:37
@@ -12,29 +17,41 @@ import utils.ListNode;
 public class ReorderList {
 
     public static void reorderList(ListNode head) {
-        if (head == null || head.next == null){
+        if (head == null) {
             return;
         }
 
-        ListNode p = head, q = head;
-        while (q.next != null && q.next.next != null){
-            p = p.next;
-            q = q.next.next;
+        List<ListNode> list = new ArrayList<>();
+        while (head != null) {
+            list.add(head);
+            head = head.next;
         }
 
-        //快慢指针找到中间节点
-        ListNode mid = p;
-
-        //中间节点之后反转
-        ListNode temp;
-        if (p.next != null && p.next.next != null){
-            temp = p.next.next;
+        if (list.size() == 1) {
+            return;
         }
 
+        int p = 0, q = list.size() - 1;
+        ListNode newHead = null;
+        while (p < q) {
+            if (newHead == null) {
+                newHead = list.get(p);
+                newHead.next = list.get(q);
+            } else {
+                list.get(q + 1).next = list.get(p);
+                list.get(p).next = list.get(q);
+            }
 
+            p++;
+            q--;
+        }
 
-
-
+        if ((list.size() & 1) == 0) {
+            list.get(q + 1).next = null;
+        } else {
+            list.get(q + 1).next = list.get(p);
+            list.get(p).next = null;
+        }
     }
 
     public static void main(String[] args) {
