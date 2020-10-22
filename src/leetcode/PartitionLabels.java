@@ -58,26 +58,11 @@ public class PartitionLabels {
      * @return
      */
     private static int determineRange(int idx, String S) {
-        char c = S.charAt(idx);
-        List<Integer> list;
-
-        list = posArr[c - 97];
-
-        int lastIdx;
-        if (list != null) {
-            lastIdx = list.get(list.size() - 1);
-        } else {
-            return idx;
-        }
+        List<Integer> list = posArr[S.charAt(idx) - 97];
+        int lastIdx = list.get(list.size() - 1);
 
         for (; idx <= lastIdx; idx++) {
-            c = S.charAt(idx);
-            list = posArr[c - 97];
-
-            if (list == null) {
-                continue;
-            }
-
+            list = posArr[S.charAt(idx) - 97];
             lastIdx = Math.max(lastIdx, list.get(list.size() - 1));
         }
 
