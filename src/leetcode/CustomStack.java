@@ -1,43 +1,48 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 设计一个支持增量操作的栈
  * https://leetcode-cn.com/problems/design-a-stack-with-increment-operation/
+ *
+ * 使用数组效率比 list 高
  *
  * @author liuxin
  * @time 2020/10/22 15:22
  */
 public class CustomStack {
 
-    private final List<Integer> list;
+    private final int[] arr;
+    private int curPeek;
     private final int maxSize;
 
     public CustomStack(int maxSize) {
-        this.list = new ArrayList<>();
+        this.arr = new int[maxSize];
+        this.curPeek = -1;
         this.maxSize = maxSize;
     }
 
     public void push(int x) {
-        if (list.size() >= maxSize) {
+        if (curPeek + 1 > maxSize) {
             return;
         }
 
-        list.add(x);
+        curPeek++;
+        arr[curPeek] = x;
     }
 
     public int pop() {
-        if (list.isEmpty()) {
+        if (curPeek < 0) {
             return -1;
         }
-        return list.remove(list.size() - 1);
+
+        int res = arr[curPeek];
+        curPeek--;
+        return res;
     }
 
     public void increment(int k, int val) {
-        for (int i = 0; i < k && i < list.size(); i++) {
-            list.set(i, list.get(i) + val);
+        for (int i = 0; i < k && i <= curPeek; i++) {
+            arr[i] += val;
         }
     }
 
