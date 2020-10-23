@@ -32,7 +32,6 @@ public class SumEvenAfterQueries {
                     evenSum -= A[queries[i][1]];
                 }
 
-                A[queries[i][1]] = cur;
             } else {
                 // odd
 
@@ -41,10 +40,9 @@ public class SumEvenAfterQueries {
                 if ((cur & 1) == 0) {
                     evenSum += cur;
                 }
-
-                A[queries[i][1]] = cur;
             }
 
+            A[queries[i][1]] = cur;
             arr[i] = evenSum;
         }
 
