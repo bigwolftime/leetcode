@@ -1,10 +1,13 @@
 package offer;
 
+import java.math.BigDecimal;
+
 /**
- * 青蛙跳台台阶问题
+ * 青蛙跳台阶问题
  * https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof/
  *
- * 最终优化版
+ * 大数给爷搞懵了😵
+ * 用了 BigDecimal ...
  */
 public class NumWays {
 
@@ -13,18 +16,20 @@ public class NumWays {
             return 1;
         }
         if (n == 1 || n == 2) {
-            return n % 1000000007;
+            return n;
         }
 
-        long a = 1, b = 2;
-        long temp = a + b;
+        BigDecimal a = new BigDecimal(1);
+        BigDecimal b = new BigDecimal(2);
+        BigDecimal temp = new BigDecimal(a.intValue() + b.intValue());
         for (int i = 3; i <= n; i++) {
-            temp = a + b;
+            temp = a.add(b);
             a = b;
             b = temp;
         }
 
-        return (int) (temp % 1000000007L);
+        BigDecimal[] arr = temp.divideAndRemainder(BigDecimal.valueOf(1000000007L));
+        return arr[1].intValue();
     }
 
     public static void main(String[] args) {
