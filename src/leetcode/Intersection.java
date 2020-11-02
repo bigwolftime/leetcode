@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * 两个数组的交集
- * https://leetcode-cn.com/problems/intersection-of-two-arrays/description/
+ * https://leetcode-cn.com/problems/intersection-of-two-arrays/
  * @author bwt
  *
  */
@@ -14,24 +14,23 @@ public class Intersection {
         HashSet<Integer> set = new HashSet<>();
         HashSet<Integer> res = new HashSet<>();
 
-        for (int i : nums1){
-        	set.add(i);
+        for (int val : nums1){
+        	set.add(val);
 		}
 
-        for (int i : nums2){
-        	if (set.contains(i)){
-        		res.add(i);
+        for (int val : nums2){
+        	if (set.contains(val)){
+        		res.add(val);
 			}
 		}
 
-        int[] num = new int[res.size()];
+        int[] arr = new int[res.size()];
         int index = 0;
-		Iterator iterator = res.iterator();
-		while (iterator.hasNext()){
-			num[index++] = (int) iterator.next();
+		for (int val : res) {
+			arr[index++] = val;
 		}
 
-		return num;
+		return arr;
     }
 	
 	public static void main(String[] args) {
