@@ -11,7 +11,7 @@ import utils.ArrayUtil;
  * 时间复杂度: O(N ^ 2)
  * 空间复杂度: O(1)
  *
- * 可以保证排序稳定性.
+ * 无法保证排序稳定性.
  *
  * @author liuxin
  * @time 2020/11/4 11:48
