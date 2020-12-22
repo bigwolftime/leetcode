@@ -74,7 +74,9 @@ public class KClosest {
     }
 
     public static void main(String[] args) {
+        String s = "1";
 
+        s.substring(0, 20);
     }
 
 }
