@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * 乘机最大子数组
+ * 乘积最大子数组
  * https://leetcode-cn.com/problems/maximum-product-subarray/
  *
  * 状态转移方程需要考虑特殊情况:
@@ -18,16 +18,6 @@ public class maxProduct {
         for (int i = 1; i < nums.length; i++) {
             maxArr[i] = Math.max(maxArr[i - 1] * nums[i], Math.max(nums[i], minArr[i - 1] * nums[i]));
             minArr[i] = Math.min(minArr[i - 1] * nums[i], Math.min(nums[i], maxArr[i - 1] * nums[i]));
-        }
-
-        for (int i : maxArr) {
-            System.err.println(i);
-        }
-
-        System.err.println("========");
-
-        for (int i : minArr) {
-            System.err.println(i);
         }
 
         return max;
