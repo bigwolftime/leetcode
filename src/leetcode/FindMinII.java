@@ -7,7 +7,7 @@ package leetcode;
  * @author liuxin
  * @date 2020/7/22 7:40
  */
-public class MinArray {
+public class FindMinII {
 
     private static int findMin(int[] nums) {
         int last = Integer.MIN_VALUE;
