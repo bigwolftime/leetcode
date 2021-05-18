@@ -1,5 +1,7 @@
 package newcode;
 
+import utils.ArrayUtil;
+
 /**
  * 递归分治的思想.
  *
@@ -17,6 +19,31 @@ public class QuickSort {
 
     public static void main(String[] args) {
 
+    }
+
+
+    private static void quickSort(int[] arr, int left, int right) {
+        if (left < right) {
+            int partition = partition(arr, left, right);
+            quickSort(arr, left, partition - 1);
+            quickSort(arr, partition + 1, right);
+        }
+    }
+
+    public static int partition(int[] arr, int low, int high) {
+        int num = arr[low];
+
+        while (low < high) {
+            while (low < high && arr[high] > num) {
+                high--;
+            }
+            ArrayUtil.swap(arr, low, high);//交换后，基准值跑到高位较小的位置了
+            while (low < high && arr[low] <= num) {
+                low++;
+            }
+            ArrayUtil.swap(arr, low, high);//交换后，基准值又跑到低位较大位置了
+        }
+        return low;
     }
 
 }
