@@ -1,6 +1,9 @@
 package leetcode;
 
 /**
+ * 第一个错误的版本
+ * https://leetcode-cn.com/problems/first-bad-version/
+ *
  * @Author Liuxin
  * @Date 2019/3/13 18:50
  */
@@ -10,21 +13,20 @@ public class FirstBadVersion {
         int start = 1, end = n;
         int mid;
 
+        int minVersion = Integer.MAX_VALUE;
+
         while (start <= end){
-            mid = (start + end) >> 1;
+            mid = start + ((end - start) >> 1);
 
-            if (isBadVersion(mid)){
-                end = mid;
-            }else{
-                start = mid;
-            }
-
-            if (end - start <= 1){
-                return isBadVersion(start) ? start : end;
+            if (isBadVersion(mid)) {
+                minVersion = Math.min(mid, minVersion);
+                end = mid - 1;
+            } else {
+                start = mid + 1;
             }
         }
 
-        return -1;
+        return minVersion;
     }
 
     private static boolean isBadVersion(int n){
@@ -35,6 +37,6 @@ public class FirstBadVersion {
     }
 
     public static void main(String[] args) {
-        System.err.println(firstBadVersion(1));
+        System.err.println(firstBadVersion(4));
     }
 }
