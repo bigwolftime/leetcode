@@ -13,45 +13,41 @@ import utils.ListNode;
 public class MergeTwoLists {
 
     public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        ListNode res = new ListNode(0);
-        ListNode current = res;
-        ListNode temp = null;
+        ListNode p = l1;
+        ListNode q = l2;
 
-        while(l1 != null && l2 != null){
-            if (l1.val < l2.val){
-                temp = new ListNode(l1.val);
-                l1 = l1.next;
-            }else {
-                temp = new ListNode(l2.val);
-                l2 = l2.next;
+        ListNode head = new ListNode(-1);
+        ListNode cur = head;
+
+        while (p != null && q != null) {
+            int val1 = p.val;
+            int val2 = q.val;
+
+            if (val1 <= val2) {
+                cur.next = p;
+                cur = p;
+                p = p.next;
+            } else {
+                cur.next = q;
+                cur = q;
+                q = q.next;
             }
-
-            current.next = temp;
-            current = temp;
         }
 
-        //处理长度不一致的情况
-        if (l1 != null){
-            leftListNode(current, l1);
-        }else if (l2 != null){
-            leftListNode(current, l2);
+        while (p != null) {
+            cur.next = p;
+            cur = p;
+            p = p.next;
+        }
+        while (q != null) {
+            cur.next = q;
+            cur = q;
+            q = q.next;
         }
 
-        return res.next;
+        return head.next;
     }
 
-    public static void leftListNode(ListNode current, ListNode leftListNode){
-        ListNode temp = null;
-
-        while(leftListNode != null){
-            temp = new ListNode(leftListNode.val);
-
-            current.next = temp;
-            current = temp;
-
-            leftListNode = leftListNode.next;
-        }
-    }
 
     public static void main(String[] args) {
         ListNode l1 = new ListNode(1);

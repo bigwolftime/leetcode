@@ -13,38 +13,79 @@ import utils.ListNode;
 public class AddTwoNumbers {
 
 	public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-		boolean flag = false;	//借位标志
-		
-		ListNode res = new ListNode(-1);
-		ListNode test = res;
-		int num = 0;
-		while(l1 != null || l2 != null || flag) {
-			if (l1 != null) {
-				num += l1.val;
-				l1 = l1.next;
-			}
-				
-			if (l2 != null) {
-				num += l2.val;
-				l2 = l2.next;
-			}
-			
-			if (flag)
-				num++;
-			
-			if (num >= 10)
-				flag = true;	//需要借位
-			else
-				flag = false;
-			
-			ListNode tmp = new ListNode(num % 10);
-			num = 0;
-			
-			test.next = tmp;
-			test = test.next;
+		if (l1 == null) {
+			return l2;
 		}
-		
-		return res.next;
+		if (l2 == null) {
+			return l1;
+		}
+
+		int firstSum = l1.val + l2.val;
+		boolean flag = firstSum > 9;
+		if (flag) {
+			firstSum %= 10;
+		}
+
+		ListNode newHead = new ListNode(firstSum);
+
+		ListNode pre = newHead;
+
+		l1 = l1.next;
+		l2 = l2.next;
+
+		while (l1 != null && l2 != null) {
+			int curSum = l1.val + l2.val;
+			if (flag) {
+				curSum++;
+			}
+
+			flag = curSum >= 10;
+			if (flag) {
+				curSum %= 10;
+			}
+
+			ListNode newNode = new ListNode(curSum);
+
+			pre.next = newNode;
+			pre = newNode;
+
+			l1 = l1.next;
+			l2 = l2.next;
+		}
+
+		while (l1 != null) {
+			int curSum = l1.val + (flag ? 1 : 0);
+			flag = curSum >= 10;
+			if (flag) {
+				curSum %= 10;
+			}
+
+			ListNode newNode = new ListNode(curSum);
+			pre.next = newNode;
+			pre = newNode;
+
+			l1 = l1.next;
+		}
+		while (l2 != null) {
+			int curSum = l2.val + (flag ? 1 : 0);
+			flag = curSum >= 10;
+			if (flag) {
+				curSum %= 10;
+			}
+
+			ListNode newNode = new ListNode(curSum);
+			pre.next = newNode;
+			pre = newNode;
+
+			l2 = l2.next;
+		}
+
+		if (flag) {
+			ListNode newNode = new ListNode(1);
+			pre.next = newNode;
+		}
+
+		return newHead;
     }
 	
 	public static void main(String[] args) {
